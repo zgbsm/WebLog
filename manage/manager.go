@@ -25,7 +25,7 @@ func Create(c *gin.Context) {
 	ast, issue := env.Compile(cel_code)
 	data.ErrHandle(issue.Err())
 	prg, err := env.Program(ast)
-	info := data.Info{Start: time.Now(), Rule: prg, Requested: false}
+	info := data.Info{Start: time.Now(), Rule: prg, Requested: false, Requests: make([]string, 0)}
 	data.DataLock.Lock()
 	data.Data[codeStr] = info
 	data.DataLock.Unlock()

@@ -10,6 +10,7 @@ type Info struct {
 	Start     time.Time   `json:"start"`
 	Rule      cel.Program `json:"rule"`
 	Requested bool        `json:"requested"`
+	Requests  []string    `json:"requests"`
 }
 
 var Data map[string]Info

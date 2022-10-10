@@ -2,6 +2,7 @@ package manage
 
 import (
 	"WebLog/data"
+	"bytes"
 	"fmt"
 	"io"
 	"net/http"
@@ -34,8 +35,10 @@ func handler(res http.ResponseWriter, req *http.Request) {
 		res, _ := out.ConvertToNative(reflect.TypeOf(true))
 		if res.(bool) == true {
 			v.Requested = true
+			var buffer bytes.Buffer
+			req.Write(&buffer)
+			v.Requests = append(v.Requests, buffer.String())
 			data.Data[k] = v
-			break
 		}
 	}
 	data.DataLock.Unlock()
