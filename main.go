@@ -13,7 +13,7 @@ func main() {
 	r := gin.Default()
 	r.POST("/create", manage.Create)
 	r.GET("/get", manage.Get)
-	err := r.Run(fmt.Sprintf("127.0.0.1:%d", data.Config.Web))
+	err := r.Run(fmt.Sprintf(":%d", data.Config.Web))
 	data.ErrHandle(err)
 }
 
