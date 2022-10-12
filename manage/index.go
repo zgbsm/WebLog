@@ -16,6 +16,7 @@ func Listener() {
 }
 
 func handler(res http.ResponseWriter, req *http.Request) {
+	println("receive request from " + req.Host)
 	method := req.Method
 	url := req.URL.String()
 	headers := make(map[string]string)
